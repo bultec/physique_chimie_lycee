@@ -1,4 +1,4 @@
-Pointages AviMéca
+Pointages AviMeca
 t;x;y
 (s);(m);(m)
 0.000;-1.08E-2;3.00E-1
