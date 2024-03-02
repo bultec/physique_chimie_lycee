@@ -1,5 +1,6 @@
 numpy
 matplotlib
+scipy
 pyserial
 pduino
 juduino
