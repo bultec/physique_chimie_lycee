@@ -4,5 +4,5 @@ scipy
 pyserial
 pduino
 juduino
-anywidgets
+anywidget[dev]
 
