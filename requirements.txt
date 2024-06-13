@@ -4,3 +4,5 @@ scipy
 pyserial
 pduino
 juduino
+anywidgets
+
