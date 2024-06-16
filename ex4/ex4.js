@@ -33,17 +33,10 @@ function lit_serie(reader) {
   return value;
 }
 
-const formatString = (template, ...args) => {
-  return template.replace(/{([0-9]+)}/g, function (match, index) {
-    return typeof args[index] === 'undefined' ? match : args[index];
-  });
-}
-
 function formatte(chaine) {
   let tension = parseInt(chaine) * 5 / 1023;
   tension = tension.toPrecision(3);
-  return formatString('Valeur lue : {0}; Tension mesurée: {1} V', chaine, tension);
-
+  return `valeur lue : ${chaine}; Tension mesurée : ${tension} V`;
 }
  
 async function do_envoi(message) {

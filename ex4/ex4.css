@@ -6,3 +6,7 @@
 .rouge {
     background-color:lightcoral;
 }
+
+button {
+    cursor: pointer;
+}
