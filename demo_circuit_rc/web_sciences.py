@@ -1,3 +1,5 @@
+from IPython.display import HTML, display
+
 def get_interface(code_init):
 	S='''
 	<!doctype html>
@@ -449,7 +451,10 @@ def get_interface(code_init):
 	  // ensuite, on traite toutes les autres grandeurs
 	  for (let i=0; i<series.length; i++) {
 	    let lignes = 1;
-	    une_grandeur = series[i]["grandeur"] + " = [";
+	    if (tableau_masjuscule) 
+	      une_grandeur = series[i]["grandeur"].toUpperCase() + " = [";
+	    else
+	      une_grandeur = series[i]["grandeur"] + " = [";
 	    for (let j=0; j<my_chart.data.datasets[i].data.length; j++) {
 	      une_grandeur += my_chart.data.datasets[i].data[j]["y"] + ", ";
 	      if ((!for_web) && (une_grandeur.length > lignes*nb_car)) {
@@ -478,10 +483,12 @@ def get_interface(code_init):
 	  affichage = "Mesures Arduino" + "\\n";
 	  if (mode == "temporel")
 	      affichage += "t" + "	";
+	  if (mode == "point")
+	      affichage += axes[0]["grandeur"] + "	";
 	  for (let i=0; i<series.length; i++)
 	    affichage += series[i]["grandeur"] + "	";
 	  affichage += "\\n";
-	  if (mode == "temporel")
+	  if ((mode == "temporel") || (mode == "point"))
 	    affichage += axes[0]["unite"] + "	";
 	  for (let i=0; i<series.length; i++)
 	    affichage += series[i]["unite"] + "	";
@@ -651,3 +658,12 @@ def get_interface(code_init):
 	'''
 	S = S.replace('// --- inserer ici ---', code_init)
 	return S
+
+# --- class WebSciences ---
+class WebSciences:
+    def __init__(self, init) -> None:
+        self.interface = get_interface(init)
+
+    def affiche(self):
+        display(HTML(self.interface))
+    
